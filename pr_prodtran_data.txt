@@ -1,0 +1,14 @@
+-- p_pid int, p_date date, p_quantity int, p_price decimal(10,2), p_user varchar(50)
+/*SET @sale_values = 1	2025-02-12	23	10.3	Matyin
+2	2025-03-13	12	3.23	Ryan;
+select sale_values;*/
+
+call pr_prodtran_bulk("1	2025-02-12	23	10.3	Matyin,2	2025-03-13	12	3.23	Ryan,4	2025-10-13	111	+123	Jack");
+select REGEXP_INSTR( substring("4	2025-10-13	11	12a	Jack",17), "[^0-9]");
+select REGEXP_INSTR("*1","[^0-9-+]");# only numeric values allowed here
+#call procedure name
+#1	2025-02-12	23	10.3	Matyin
+
+select * from information_schema.routines where routine_name like '%BULK%';
+select * from information_schema.routines where routine_type like '%PROCED%'
+and specific_name like '%PROD%';
